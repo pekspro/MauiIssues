@@ -4,14 +4,19 @@
              x:Class="MauiIssues.MainPage"
              xmlns:r="clr-namespace:MauiIssues"
              >
-    <CollectionView 
-                x:Name="ItemsList"
-                ItemSizingStrategy="MeasureFirstItem"
-                >
-        <CollectionView.ItemTemplate>
+    <ListView x:Name="ItemsList">
+        <ListView.ItemTemplate>
             <DataTemplate>
-                <r:ItemView />
+                <ViewCell>
+                    <ViewCell.ContextActions>
+                        <MenuItem Text="Detail"></MenuItem>
+                        <MenuItem Text="Delete"></MenuItem>
+                    </ViewCell.ContextActions>
+                    <Grid>
+                        <Label Text="{Binding }" FontSize="25"></Label>
+                    </Grid>
+                </ViewCell>
             </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>
