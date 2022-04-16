@@ -2,7 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiIssues.MainPage">
-
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="You won a million!">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource Glyph="$" Size="32" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
     <ScrollView>
         <VerticalStackLayout Spacing="25" Padding="30">
 
