@@ -46,13 +46,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="SettingsPage.xaml.cs">
-	    <DependentUpon>SettingsPage.xaml</DependentUpon>
+	  <Compile Update="UntitledPage.xaml.cs">
+	    <DependentUpon>UntitledPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="SettingsPage.xaml">
+	  <MauiXaml Update="UntitledPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

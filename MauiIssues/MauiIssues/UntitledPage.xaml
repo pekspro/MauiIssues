@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiIssues.SettingsPage"
-             Title="Settings">
+             x:Class="MauiIssues.UntitledPage"
+             >
 
     <VerticalStackLayout Spacing="25" Padding="30">
 
         <Label 
-            Text="No settings yet"
+            Text="This page has no title."
             FontSize="32"
             HorizontalOptions="Center" />
 
