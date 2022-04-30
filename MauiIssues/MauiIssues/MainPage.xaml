@@ -13,11 +13,6 @@
                 FontSize="32"
                 HorizontalOptions="Center" />
 
-            <Button 
-                Text="Open details"
-                Clicked="OnOpenDetailsClicked"
-                HorizontalOptions="Center" />
-
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
