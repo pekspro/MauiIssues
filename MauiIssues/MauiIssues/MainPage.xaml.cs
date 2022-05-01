@@ -1,20 +1,37 @@
-﻿namespace MauiIssues;
+﻿using System.ComponentModel;
+
+namespace MauiIssues;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+    public ViewModel Model { get; set; } = new ViewModel();
 
-	public MainPage()
-	{
-		InitializeComponent();
-	}
-
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
-		CounterLabel.Text = $"Current count: {count}";
-
-		SemanticScreenReader.Announce(CounterLabel.Text);
-	}
+    public MainPage()
+    {
+        InitializeComponent();
+        BindingContext = Model;
+    }
 }
 
+public class ViewModel : INotifyPropertyChanged
+{
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    public int Counter { get; set; }
+
+    private System.Timers.Timer Timer = new();
+
+    public ViewModel()
+    {
+        Timer.Interval = 1;
+        Timer.Enabled = true;
+        Timer.Elapsed += (o, s) =>
+        {
+            Application.Current.Dispatcher.Dispatch(() =>
+            {
+                Counter = (Counter + 1) % 1000;
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(Counter)));
+            });
+        };
+    }
+}
