@@ -5,20 +5,30 @@
              x:Class="MauiIssues.MainPage"
              >
     <Grid>
-        <CollectionView ItemsSource="{Binding Issues}" ItemSizingStrategy="MeasureFirstItem">
+        <CollectionView ItemsSource="{Binding Issues}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Label Text="{Binding Title, Mode=OneWay}"
-                            TextColor="Red"
-                            IsVisible="{Binding IsRed}"
-                                />
+                    <SwipeView Threshold="250">
+                        <SwipeView.LeftItems>
+                            <SwipeItems Mode="Execute">
+                                <SwipeItem Text="Set not completed"
+                                           IsVisible="{Binding IsCompleted}"
+                                           Command="{Binding CommandToggle}"
+                                           BackgroundColor="Red" />
 
-                        <Label Text="{Binding Title, Mode=OneWay}"
-                            TextColor="Green"
-                            IsVisible="{Binding IsGreen}}"
-                                />
-                    </Grid>
+                                <SwipeItem Text="Set completed"
+                                           IsVisible="{Binding IsNotCompleted}"
+                                           Command="{Binding CommandToggle}"
+                                           BackgroundColor="Green" />
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+
+                        <HorizontalStackLayout Spacing="20">
+                            <Label Text="{Binding Title, Mode=OneWay}" />
+                            <Label Text="Completed: " />
+                            <Label Text="{Binding IsCompleted}" />
+                        </HorizontalStackLayout>
+                    </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
