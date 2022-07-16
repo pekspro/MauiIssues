@@ -1,4 +1,6 @@
-﻿namespace MauiIssues;
+﻿using Microsoft.Extensions.DependencyInjection.Extensions;
+
+namespace MauiIssues;
 
 public static class MauiProgram
 {
@@ -13,6 +15,8 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		return builder.Build();
+        builder.Services.TryAddSingleton<SecondaryPage>();
+
+        return builder.Build();
 	}
 }
