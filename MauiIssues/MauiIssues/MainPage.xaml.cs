@@ -1,24 +1,22 @@
 ﻿namespace MauiIssues;
 
+public record Person (string PersonName);
+
+public record Team (string TeamName, Person Leader);
+
+public record Teams (List<Team> TheTeams);
+
 public partial class MainPage : ContentPage
 {
-	int count = 0;
-
 	public MainPage()
 	{
 		InitializeComponent();
-	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
+		Person alice = new Person("Alice");
+		Team coders = new Team("Coders", alice);
+		Teams teams = new Teams(new List<Team> { coders });
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
+		BindingContext = teams;
 	}
 }
 

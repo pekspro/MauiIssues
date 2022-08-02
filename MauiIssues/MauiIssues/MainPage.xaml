@@ -1,41 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiIssues.MainPage">
-			 
-    <ScrollView>
-        <VerticalStackLayout 
-            Spacing="25" 
-            Padding="30,0" 
-            VerticalOptions="Center">
+             xmlns:vm="clr-namespace:MauiIssues"
+             x:Class="MauiIssues.MainPage"
+             >
+    <!--Add this to ContentPage to see Issue 2. x:DataType="vm:Teams"-->
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-                
-            <Label 
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-            
-            <Label 
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+    <VerticalStackLayout>
+        <Label Text="Issue 1: " />
+        <CollectionView ItemsSource="{Binding TheTeams}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <!--
+                        Issue 1. This will show nothing. A workaround is to wrap everything in a Grid:
+                    
+                        <Grid> <vm:PersonView BindingContext="{Binding Leader}"/> </Grid>
+                    -->
+                    <vm:PersonView BindingContext="{Binding Leader}"/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
-            <Button 
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
 
+        <!-- 
+            Issue 2. These will not compile when x:DataType="vm:Teams" is added to ContentPage.
+        -->
+        <Label Text="Issue 2A:" />
+        <VerticalStackLayout BindingContext="{Binding TheTeams[0]}">
+            <HorizontalStackLayout BindingContext="{Binding Leader}">
+                <Label Text="{Binding PersonName}" />
+            </HorizontalStackLayout>
         </VerticalStackLayout>
-    </ScrollView>
- 
+
+        <Label Text="Issue 2B:" />
+        <CollectionView ItemsSource="{Binding TheTeams}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout>
+                        <HorizontalStackLayout BindingContext="{Binding Leader}">
+                            <Label Text="{Binding PersonName}" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
 </ContentPage>
