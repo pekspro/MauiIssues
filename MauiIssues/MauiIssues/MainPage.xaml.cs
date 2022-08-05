@@ -2,23 +2,26 @@
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
-
 	public MainPage()
 	{
 		InitializeComponent();
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
+	protected async override void OnNavigatedTo(NavigatedToEventArgs args)
 	{
-		count++;
+		base.OnNavigatedTo(args);
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+		await Task.Delay(1000);
+		ButtonTwo.IsEnabled = true;
+    }
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
+	private void DarkButtom_Clicked(object sender, EventArgs e)
+	{
+		App.Current.UserAppTheme = AppTheme.Dark;
+	}
+
+	private void LightButtom_Clicked(object sender, EventArgs e)
+	{
+		App.Current.UserAppTheme = AppTheme.Light;
 	}
 }
-
