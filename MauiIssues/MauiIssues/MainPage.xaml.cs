@@ -1,24 +1,78 @@
-﻿namespace MauiIssues;
+﻿using System.Collections.ObjectModel;
+
+namespace MauiIssues;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+    public MainPage()
+    {
+        InitializeComponent();
 
-	public MainPage()
-	{
-		InitializeComponent();
-	}
+        BindingContext = this;
+    }
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
+    public List<string> Colors { get; set; } = new List<string>()
+    {
+        "Red",
+        "LightRed",
+        "DarkRed",
+    };
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+    public int SelectedColorIndex { get; set; }
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+    private int ChangeCount = 0;
+
+    private void OnCounterClicked(object sender, EventArgs e)
+    {
+        ChangeCount++;
+        Colors = new List<string>()
+        {
+            "Blue " + ChangeCount,
+            "LightBlue " + ChangeCount,
+            "DarkBlue " + ChangeCount,
+        };
+
+        OnPropertyChanged(nameof(Colors));
+        SelectedColorIndex = 0;
+        OnPropertyChanged(nameof(SelectedColorIndex));
+    }
+
+    /*
+    This code works better:
+
+    public MainPage()
+    {
+        InitializeComponent();
+
+        BindingContext = this;
+    }
+
+    public ObservableCollection<string> Colors { get; set; } = new ObservableCollection<string>()
+    {
+        "Red",
+        "LightRed",
+        "DarkRed",
+    };
+
+    public int SelectedColorIndex { get; set; }
+
+    int ChangeCount = 0;
+
+    private void OnCounterClicked(object sender, EventArgs e)
+    {
+        ChangeCount++;
+
+        Colors.Clear();
+
+        Colors.Add("Blue " + ChangeCount);
+        Colors.Add("LightBlue " + ChangeCount);
+        Colors.Add("DarkBlue " + ChangeCount);
+
+        OnPropertyChanged(nameof(Colors));
+        SelectedColorIndex = 0;
+        OnPropertyChanged(nameof(SelectedColorIndex));
+    }
+
+    */
 }
 

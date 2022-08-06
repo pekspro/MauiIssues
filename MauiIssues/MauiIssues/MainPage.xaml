@@ -2,40 +2,32 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiIssues.MainPage">
-			 
-    <ScrollView>
-        <VerticalStackLayout 
-            Spacing="25" 
-            Padding="30,0" 
-            VerticalOptions="Center">
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-                
-            <Label 
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-            
-            <Label 
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+    <VerticalStackLayout 
+        Spacing="25" 
+        Padding="30,0" 
+        VerticalOptions="Start">
 
-            <Button 
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+        <HorizontalStackLayout Spacing="25">
+            <VerticalStackLayout>
+                <Label Text="Available colors:" />
+                <Label Text="{Binding Colors[0]}" />
+                <Label Text="{Binding Colors[1]}" />
+                <Label Text="{Binding Colors[2]}" />
+            </VerticalStackLayout>
 
-        </VerticalStackLayout>
-    </ScrollView>
- 
+            <VerticalStackLayout>
+                <Label Text="Select a color:" />
+                <Picker ItemsSource="{Binding Colors}" SelectedIndex="{Binding SelectedColorIndex}" />
+            </VerticalStackLayout>
+        </HorizontalStackLayout>
+
+        <Button 
+            x:Name="CounterBtn"
+            Text="Show blue colors"
+            Clicked="OnCounterClicked"
+            HorizontalOptions="Start"
+            />
+        
+    </VerticalStackLayout>
 </ContentPage>
