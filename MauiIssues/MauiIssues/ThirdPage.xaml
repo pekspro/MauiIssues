@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiIssues.ThirdPage"
+             Title="Third">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Primary 1" />
+        <ToolbarItem Text="Secondary 1"
+                     Order="Secondary" />
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout>
+        <Label 
+            Text="Third page. One primary, and one secondary."
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>
+ 

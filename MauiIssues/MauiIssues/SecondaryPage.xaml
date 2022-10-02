@@ -1,29 +1,26 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiIssues.MainPage">
-
+             x:Class="MauiIssues.SecondaryPage"
+             Title="Second">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Primary 1" />
         <ToolbarItem Text="Primary 2" />
-        <ToolbarItem Text="Primary 3" />
         <ToolbarItem Text="Secondary 1"
                      Order="Secondary" />
         <ToolbarItem Text="Secondary 2"
                      Order="Secondary" />
-        <ToolbarItem Text="Secondary 3"
-                     Order="Secondary" />
     </ContentPage.ToolbarItems>
-
+    
     <VerticalStackLayout>
         <Label 
-            Text="First page. Three primary, and three secondary."
+            Text="Second page. Two primary, and two secondary."
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
         <Button 
             x:Name="ButtonNavigate"
-            Text="Go to second page"
+            Text="Go to third page"
             Clicked="ButtonNavigate_Clicked"
             HorizontalOptions="Center" />
 

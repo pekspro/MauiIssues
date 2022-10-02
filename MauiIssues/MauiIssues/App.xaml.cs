@@ -7,5 +7,8 @@ public partial class App : Application
 		InitializeComponent();
 
 		MainPage = new AppShell();
-	}
+
+        Routing.RegisterRoute(nameof(SecondaryPage), typeof(SecondaryPage));
+        Routing.RegisterRoute(nameof(ThirdPage), typeof(ThirdPage));
+    }
 }
