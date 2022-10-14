@@ -1,24 +1,25 @@
-﻿namespace MauiIssues;
+﻿using System.Collections.ObjectModel;
+
+namespace MauiIssues;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+    public MainPage()
+    {
+        InitializeComponent();
 
-	public MainPage()
-	{
-		InitializeComponent();
-	}
+        BindingContext = this;
+    }
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
+    public int SpanCount { get; set; } = 2;
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+    public ObservableCollection<int> Numbers { get; } =
+        new ObservableCollection<int>(Enumerable.Range(1, 8));
+        //new ObservableCollection<int>(Enumerable.Range(1, 100));
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+    private void AddColumn_Clicked(object sender, EventArgs e)
+    {
+        SpanCount++;
+        OnPropertyChanged(nameof(SpanCount));
+    }
 }
-
