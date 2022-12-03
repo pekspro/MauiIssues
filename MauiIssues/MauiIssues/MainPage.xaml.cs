@@ -2,23 +2,35 @@
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
-
 	public MainPage()
 	{
 		InitializeComponent();
-	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
+        Picker.ItemsSource = new List<string> { "One", "Two", "Three" };
+		Picker.SelectedIndex = 1;
+    }
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+    override async protected void OnAppearing()
+    {
+        base.OnAppearing();
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+        DisabledButton.IsEnabled = false;
+        await Task.Delay(100);
+        DisabledButton.IsEnabled = true;
+
+        Window.Width = 360;
+        Window.Height = 700;
+    }
+
+    private void ThemeLight_CheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        if (ThemeLight.IsChecked)
+        {
+            App.Current.UserAppTheme = AppTheme.Light;
+        }
+        else
+        {
+            App.Current.UserAppTheme = AppTheme.Dark;            
+        }
+    }
 }
-

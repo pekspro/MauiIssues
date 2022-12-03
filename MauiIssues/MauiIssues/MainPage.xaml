@@ -2,40 +2,43 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiIssues.MainPage">
-			 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Secondary" Text="Secondary 1" />
+    </ContentPage.ToolbarItems>
+    <Shell.SearchHandler>
+        <SearchHandler 
+                Placeholder="Search box"
+                SearchBoxVisibility="Expanded"
+                >
+        </SearchHandler>
+    </Shell.SearchHandler>
+
     <ScrollView>
         <VerticalStackLayout 
-            Spacing="25" 
-            Padding="30,0" 
-            VerticalOptions="Center">
+            Spacing="12" 
+            Padding="30" 
+            VerticalOptions="Start">
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-                
-            <Label 
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-            
-            <Label 
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+            <Label Text="Theme" />
+            <HorizontalStackLayout>
+                <RadioButton x:Name="ThemeLight" Content="Light" CheckedChanged="ThemeLight_CheckedChanged" />
+                <RadioButton x:Name="ThemeDark" Content="Dark" CheckedChanged="ThemeLight_CheckedChanged" />
+            </HorizontalStackLayout>
 
-            <Button 
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+            <Label Text="Picker:" />
+            <Picker x:Name="Picker" />
 
+            <Label Text="Check box:" />
+            <CheckBox HorizontalOptions="Start" />
+
+            <Label Text="Switch:" />
+            <Switch HorizontalOptions="Start" />
+
+            <Label Text="Reenabled button:" />
+            <Button Text="Hello world" x:Name="DisabledButton" />
+
+            <Label Text="Button:" />
+            <Button Text="Hello world" />
         </VerticalStackLayout>
     </ScrollView>
- 
 </ContentPage>
