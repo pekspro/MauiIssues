@@ -1,0 +1,122 @@
+﻿<style>
+    .box {
+        width: 40px;
+        height: 40px;
+    }
+
+    .type0 {
+        background-color: darkred;
+    }
+
+    .type1 {
+        background-color: darkblue;
+    }
+
+    .marble {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 8%;
+        left: 8%;
+        width: 84%;
+        height: 84%;
+    }
+
+    .row0 {
+        position: absolute;
+        top: 0;
+    }
+
+    .row1 {
+        position: absolute;
+        top: 40px;
+    }
+
+    .row2 {
+        position: absolute;
+        top: 80px;
+    }
+
+    .row3 {
+        position: absolute;
+        top: 120px;
+    }
+
+    .row4 {
+        position: absolute;
+        top: 160px;
+    }
+
+    .row5 {
+        position: absolute;
+        top: 200px;
+    }
+</style>
+
+<div style="position: relative; border: 1px solid black; height: 240px; width: 40px;">
+    @for(int col = 0; col < Width; col++)
+    {
+        for(int row = 0; row < Height; row++)
+        {
+            if (Grid[col, row] is not null)
+            {
+                <div class="box type@(Grid[col, row]) row@(row)">
+                    <img class="marble" src="_content/RazorClassLibrary1/marble-@(Grid[col, row] + 1).svg">
+                    @*<span class="marble" style="color: white">
+                        @if(Grid[col, row] == 0)
+                        {
+                            <strong>www</strong>
+                        }
+                        else
+                        {
+                            <em>.</em>
+                        }
+                    </span>*@
+                </div>
+            }
+        }
+    }
+</div>
+
+<p style="padding-top: 12px;">
+    <button class="btn btn-primary" @onclick="Add">Add</button>
+</p>
+
+@code {
+    List<int> Boxes = new List<int>();
+
+    int NextType = 0;
+
+    public const int Width = 1;
+    public const int Height = 6;
+
+    private int?[,] Grid = new int?[Width, Height];
+
+    private void Add()
+    {
+        int column = 0;
+
+        if (Grid[column, 0] is not null)
+        {
+            Grid = new int?[Width, Height];
+        }
+
+        int lastEmptyRow = 0;
+        for (int i = 1; i < Height; i++)
+        {
+            if (Grid[column, i] is null)
+            {
+                lastEmptyRow = i;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        Grid[column, lastEmptyRow] = NextType;
+
+        NextType = (NextType + 1) % 2;
+    }
+}
