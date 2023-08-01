@@ -1,4 +1,7 @@
-﻿<style>
+﻿@using Microsoft.JSInterop;
+@inject IJSRuntime JSRuntime
+
+<style>
     .box {
         width: 40px;
         height: 40px;
@@ -54,34 +57,107 @@
     }
 </style>
 
-<div style="position: relative; border: 1px solid black; height: 240px; width: 40px;">
-    @for(int col = 0; col < Width; col++)
-    {
-        for(int row = 0; row < Height; row++)
+<div id="dynamic">
+    <div style="position: relative; border: 1px solid black; height: 240px; width: 40px;">
+        @for (int col = 0; col < Width; col++)
         {
-            if (Grid[col, row] is not null)
+            // Running the loop like this will produce a small diff: for(int row = Height - 1; row >= 0; row--)
+            for (int row = 0; row < Height; row++)
             {
-                <div class="box type@(Grid[col, row]) row@(row)">
-                    <img class="marble" src="_content/RazorClassLibrary1/marble-@(Grid[col, row] + 1).svg">
-                    @*<span class="marble" style="color: white">
-                        @if(Grid[col, row] == 0)
-                        {
-                            <strong>www</strong>
-                        }
-                        else
-                        {
-                            <em>.</em>
-                        }
-                    </span>*@
-                </div>
+                if (Grid[col, row] is not null)
+                {
+                    <div id="row@(row)" class="box type@(Grid[col, row]) row@(row)">
+                        <img id="row-image@(row)" class="marble" src="_content/RazorClassLibrary1/marble-@(Grid[col, row] + 1).svg">
+                    </div>
+                }
             }
         }
-    }
+
+        @*      // Skipping the loops above, and instead using this code will produce the exact same HTML - but with a small diff.
+
+        @if (Grid[0, 0] is not null)
+        {
+        int col = 0;
+        int row = 0;
+
+        <div id="row@(row)" class="box type@(Grid[col, row]) row@(row)">
+        <img id="row-image@(row)" class="marble" src="_content/RazorClassLibrary1/marble-@(Grid[col, row] + 1).svg">
+        </div>
+        }
+
+        @if (Grid[0, 1] is not null)
+        {
+        int col = 0;
+        int row = 1;
+
+        <div id="row@(row)" class="box type@(Grid[col, row]) row@(row)">
+        <img id="row-image@(row)" class="marble" src="_content/RazorClassLibrary1/marble-@(Grid[col, row] + 1).svg">
+        </div>
+        }
+
+        @if (Grid[0, 2] is not null)
+        {
+        int col = 0;
+        int row = 2;
+
+        <div id="row@(row)"  class="box type@(Grid[col, row]) row@(row)">
+        <img id="row-image@(row)" class="marble" src="_content/RazorClassLibrary1/marble-@(Grid[col, row] + 1).svg">
+        </div>
+        }
+
+        @if (Grid[0, 3] is not null)
+        {
+        int col = 0;
+        int row = 3;
+
+        <div id="row@(row)" class="box type@(Grid[col, row]) row@(row)">
+        <img id="row-image@(row)" class="marble" src="_content/RazorClassLibrary1/marble-@(Grid[col, row] + 1).svg">
+        </div>
+        }
+
+        @if (Grid[0, 4] is not null)
+        {
+        int col = 0;
+        int row = 4;
+
+        <div id="row@(row)" class="box type@(Grid[col, row]) row@(row)">
+        <img id="row-image@(row)" class="marble" src="_content/RazorClassLibrary1/marble-@(Grid[col, row] + 1).svg">
+        </div>
+        }
+
+        @if (Grid[0, 5] is not null)
+        {
+        int col = 0;
+        int row = 5;
+
+        <div id="row@(row)" class="box type@(Grid[col, row]) row@(row)">
+        <img id="row-image@(row)" class="marble" src="_content/RazorClassLibrary1/marble-@(Grid[col, row] + 1).svg">
+        </div>
+        }
+        *@
+
+    </div>
+
+    <p style="padding-top: 12px;">
+        <button class="btn btn-primary" @onclick="Add">Add</button>
+    </p>
 </div>
 
-<p style="padding-top: 12px;">
-    <button class="btn btn-primary" @onclick="Add">Add</button>
-</p>
+@if (!IsMonitoring)
+{
+    <p style="padding-top: 12px;">
+        <button class="btn btn-primary" @onclick="StartMonitorChanges">Start monitor changes</button>
+    </p>
+}
+else
+{
+    <h3>Log</h3>
+    <button class="btn btn-primary" @onclick="ClearLog">Clear log</button>
+}
+
+<pre id="monitorLog">
+
+</pre>
 
 @code {
     List<int> Boxes = new List<int>();
@@ -118,5 +194,18 @@
         Grid[column, lastEmptyRow] = NextType;
 
         NextType = (NextType + 1) % 2;
+    }
+
+    private bool IsMonitoring = false;
+
+    private async Task StartMonitorChanges()
+    {
+        IsMonitoring = true;
+        await JSRuntime.InvokeVoidAsync("startMonitor");
+    }
+
+    private async Task ClearLog()
+    {
+        await JSRuntime.InvokeVoidAsync("clearLog");
     }
 }
