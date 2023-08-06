@@ -16,6 +16,20 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+
+/*
+ * Uncomment this to force download of images every time
+app.UseStaticFiles(new StaticFileOptions
+{
+    OnPrepareResponse = ctx =>
+    {
+        if (ctx.File.Name.EndsWith(".svg"))
+        {
+            ctx.Context.Response.Headers.Append("Cache-Control", "no-cache, max-age=0, must-revalidate, no-store");
+        }
+    }
+});
+*/
 app.UseStaticFiles();
 
 app.UseRouting();

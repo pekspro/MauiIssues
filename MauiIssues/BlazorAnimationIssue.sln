@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorClassLibrary1", "Razor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAnimationIssueMaui", "BlazorAnimationIssueMaui\BlazorAnimationIssueMaui.csproj", "{82C88D5C-9E41-460F-B021-8CBA35C392E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAnimationIssueWebAssembly", "BlazorAnimationIssueWebAssembly\BlazorAnimationIssueWebAssembly.csproj", "{1BAC9B1B-2764-47A0-9B45-AE8A5947B31F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAnimationIssueWebAssembly", "BlazorAnimationIssueWebAssembly\BlazorAnimationIssueWebAssembly.csproj", "{1BAC9B1B-2764-47A0-9B45-AE8A5947B31F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
