@@ -1,6 +1,12 @@
 ﻿using Android.App;
 using Android.Runtime;
 
+[assembly: UsesPermission(Android.Manifest.Permission.ReadExternalStorage, MaxSdkVersion = 32)]
+[assembly: UsesPermission(Android.Manifest.Permission.WriteExternalStorage, MaxSdkVersion = 32)]
+[assembly: UsesPermission(Android.Manifest.Permission.ReadMediaAudio)]
+[assembly: UsesPermission(Android.Manifest.Permission.ReadMediaImages)]
+[assembly: UsesPermission(Android.Manifest.Permission.ReadMediaVideo)]
+
 namespace MauiIssues;
 
 [Application]
