@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiIssues", "MauiIssues\MauiIssues.csproj", "{248D7F85-2152-4187-8A01-E6AF4AED9034}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiBlazorHybrid", "MauiBlazorHybrid\MauiBlazorHybrid.csproj", "{446F0BB7-B32E-40DC-A398-6531AD6F4315}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWebAssemblyStandAlone", "BlazorWebAssemblyStandAlone\BlazorWebAssemblyStandAlone.csproj", "{DDBAF51F-52CF-4190-B125-99F4C1C4496F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +13,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{248D7F85-2152-4187-8A01-E6AF4AED9034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{248D7F85-2152-4187-8A01-E6AF4AED9034}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{248D7F85-2152-4187-8A01-E6AF4AED9034}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{248D7F85-2152-4187-8A01-E6AF4AED9034}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{248D7F85-2152-4187-8A01-E6AF4AED9034}.Release|Any CPU.Build.0 = Release|Any CPU
-		{248D7F85-2152-4187-8A01-E6AF4AED9034}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{446F0BB7-B32E-40DC-A398-6531AD6F4315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{446F0BB7-B32E-40DC-A398-6531AD6F4315}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{446F0BB7-B32E-40DC-A398-6531AD6F4315}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{446F0BB7-B32E-40DC-A398-6531AD6F4315}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{446F0BB7-B32E-40DC-A398-6531AD6F4315}.Release|Any CPU.Build.0 = Release|Any CPU
+		{446F0BB7-B32E-40DC-A398-6531AD6F4315}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{DDBAF51F-52CF-4190-B125-99F4C1C4496F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDBAF51F-52CF-4190-B125-99F4C1C4496F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDBAF51F-52CF-4190-B125-99F4C1C4496F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDBAF51F-52CF-4190-B125-99F4C1C4496F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
