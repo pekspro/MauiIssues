@@ -65,6 +65,25 @@ h1:focus {
         content: "An error has occurred."
     }
 
+.blazor-loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    animation: blazor-loading-fade-in 1s 1s forwards;
+}
+
+@keyframes blazor-loading-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 .status-bar-safe-area {
     display: none;
 }

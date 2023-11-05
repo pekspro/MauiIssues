@@ -65,15 +65,33 @@ a, .btn-link {
         content: "An error has occurred."
     }
 
-.loading-progress {
+.blazor-loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    animation: blazor-loading-fade-in 1s 1s forwards;
+}
+
+@keyframes blazor-loading-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.blazor-loading-progress {
     position: relative;
     display: block;
     width: 8rem;
     height: 8rem;
-    margin: 20vh auto 1rem auto;
 }
 
-    .loading-progress circle {
+    .blazor-loading-progress circle {
         fill: none;
         stroke: #e0e0e0;
         stroke-width: 0.6rem;
@@ -81,20 +99,20 @@ a, .btn-link {
         transform: rotate(-90deg);
     }
 
-        .loading-progress circle:last-child {
+        .blazor-loading-progress circle:last-child {
             stroke: #1b6ec2;
             stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
             transition: stroke-dasharray 0.05s ease-in-out;
         }
 
-.loading-progress-text {
+.blazor-loading-progress-text {
     position: absolute;
     text-align: center;
     font-weight: bold;
-    inset: calc(20vh + 3.25rem) 0 auto 0.2rem;
+    inset: 3.25rem 0 auto 0;
 }
 
-    .loading-progress-text:after {
+    .blazor-loading-progress-text:after {
         content: var(--blazor-load-percentage-text, "Loading");
     }
 
