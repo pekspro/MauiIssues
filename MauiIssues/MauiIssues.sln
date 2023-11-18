@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiIssues", "MauiIssues\MauiIssues.csproj", "{F9B80AA2-76DA-472F-ABC3-E6103024A012}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiIssues", "MauiIssues\MauiIssues.csproj", "{F9B80AA2-76DA-472F-ABC3-E6103024A012}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneralDatabase", "GeneralDatabase\GeneralDatabase.csproj", "{DEE78108-DE0B-4679-9098-2A0179A17C81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +19,10 @@ Global
 		{F9B80AA2-76DA-472F-ABC3-E6103024A012}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9B80AA2-76DA-472F-ABC3-E6103024A012}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F9B80AA2-76DA-472F-ABC3-E6103024A012}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{DEE78108-DE0B-4679-9098-2A0179A17C81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEE78108-DE0B-4679-9098-2A0179A17C81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEE78108-DE0B-4679-9098-2A0179A17C81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEE78108-DE0B-4679-9098-2A0179A17C81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
