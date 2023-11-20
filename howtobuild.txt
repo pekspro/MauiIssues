@@ -1,0 +1,5 @@
+# Create certicate
+keytool.exe -genkey -v -keystore release.keystore -alias releasetest -keyalg RSA -keysize 2048 -validity 10000
+
+# Build with certificate password "secret"
+dotnet publish .\MauiIssues\MauiIssues\MauiIssues.csproj --framework:net8.0-android --configuration:Release /p:AndroidSigningKeyStore="C:\fullpath\release.keystore" /p:AndroidKeyStore=True /p:AndroidSigningKeyAlias=releasetest /p:AndroidSigningKeyPass=secret /p:AndroidSigningStorePass=secret /p:PublishTrimmed=false /p:RunAOTCompilation=false --output ./Output

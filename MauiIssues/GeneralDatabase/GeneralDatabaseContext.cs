@@ -23,7 +23,7 @@ public sealed class GeneralDatabaseContext : DbContext
         // dotnet ef dbcontext optimize --context GeneralDatabaseContext --output-dir GeneralDatabase\CompiledModel --namespace MauiIssues.GeneralDatabase.CompiledModel
 
         optionsBuilder
-            .UseModel(GeneralDatabaseContextModel.Instance)
+            // .UseModel(GeneralDatabaseContextModel.Instance)
             .UseSqlite($"Data Source={FileName};");
     }
 

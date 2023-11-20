@@ -26,9 +26,6 @@ public static class MauiProgram
         string cachePath = string.Empty;
 #endif
 
-        // Add this to fix the issue:
-        // System.AppContext.SetSwitch("Microsoft.EntityFrameworkCore.Issue31751", true);
-
         var context = new GeneralDatabaseContext(cachePath);
         context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
