@@ -11,6 +11,12 @@ public partial class MainPage : ContentPage
 
     private void OnCounterClicked(object sender, EventArgs e)
     {
-        Window.Height = 125;
+        var currentHeight = Window.Height;
+        
+        // Setting the same value doesn't do anything.
+        Window.Height = currentHeight;
+
+        // Changing value will cause Fatal signal 11 (SIGSEGV), code 1 on Android.
+        Window.Height = currentHeight + 1;
     }
 }
