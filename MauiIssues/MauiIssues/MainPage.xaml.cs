@@ -13,7 +13,7 @@ public partial class MainPage : ContentPage
 
     public class Issue : BindableObject
     {
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
         public bool IsRed { get; set; } = true;
         public bool IsGreen => !IsRed;
 

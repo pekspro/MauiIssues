@@ -16,7 +16,7 @@
 
                         <Label Text="{Binding Title, Mode=OneWay}"
                             TextColor="Green"
-                            IsVisible="{Binding IsGreen}}"
+                            IsVisible="{Binding IsGreen}"
                                 />
                     </Grid>
                 </DataTemplate>
