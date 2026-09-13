@@ -7,7 +7,7 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 	}
 
-	private async void OnCounterClicked(object sender, EventArgs e)
+	private async void OnCounterClicked(object? sender, EventArgs e)
 	{
         await Navigation.PushAsync(new SecondPage());
     }
