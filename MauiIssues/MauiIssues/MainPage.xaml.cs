@@ -15,7 +15,7 @@ public partial class MainPage : ContentPage
 
 public class ViewModel : INotifyPropertyChanged
 {
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     public int Counter { get; set; }
 
@@ -27,10 +27,10 @@ public class ViewModel : INotifyPropertyChanged
         Timer.Enabled = true;
         Timer.Elapsed += (o, s) =>
         {
-            Application.Current.Dispatcher.Dispatch(() =>
+            Application.Current?.Dispatcher.Dispatch(() =>
             {
                 Counter = (Counter + 1) % 1000;
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(Counter)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Counter)));
             });
         };
     }
